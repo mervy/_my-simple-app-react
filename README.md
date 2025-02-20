@@ -1,13 +1,15 @@
 
-- Primeiro, execute esses comandos:
+- Primeiro, execute esses comandos para criar o server:
+
 ```bash
 mkdir -p server/src/{config,models,routes}
 cd server
 npm init -y
 npm install express mongoose dotenv cors
+npm install nodemon --save-dev
 ```
 
-- package.json 
+- Conteúdo do package.json 
 
 ```json
 {
@@ -15,30 +17,32 @@ npm install express mongoose dotenv cors
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "start": "node src/server.js",
-    "dev": "nodemon src/server.js"
+    "start": "node ./src/server.js",
+    "dev": "nodemon -L src/server.js"
   },
-  "dependencies": {
+   "dependencies": {
     "cors": "^2.8.5",
-    "dotenv": "^16.3.1",
-    "express": "^4.18.2",
-    "mongoose": "^8.0.3"
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.10.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
   }
 }
 ```
 
 - As rotas estarão disponíveis em:
 
-* GET http://localhost:4000/api/posts
-* POST http://localhost:4000/api/posts
-* PUT/DELETE http://localhost:4000/api/posts/:id
+* GET http://localhost:5001/api/posts
+* POST http://localhost:5001/api/posts
+* PUT/DELETE http://localhost:5001/api/posts/:id
 
-- No Frontend 
+- No Frontend (pasta client)
 
 ```bash
 npm create vite@latest . -- --template react
-npm install react-bootstrap bootstrap react-router-dom
-npm install bootstrap-icons
+npm install react-bootstrap bootstrap react-router-dom bootstrap-icons
 ```
 
 - Para Google Fonts:
