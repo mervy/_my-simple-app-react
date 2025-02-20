@@ -12,6 +12,8 @@ function App() {
     ? import.meta.env.VITE_RENDER_SERVER_URL 
     : import.meta.env.VITE_LOCAL_SERVER_URL;
 
+    console.log("API_URL:", API_URL)
+
     useEffect(() => {
         const fetchPosts = async () => {
             try {
