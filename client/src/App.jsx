@@ -8,10 +8,11 @@ function App() {
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const API_URL = import.meta.env.PROD
+    const API_URL = import.meta.env.MODE === 'production'
     ? import.meta.env.VITE_RENDER_SERVER_URL 
-    : import.meta.env.VITE_LOCAL_SERVER_URL;
+    : import.meta.env.VITE_LOCAL_SERVER_URL;   
 
+    console.log("React MODE:", import.meta.env.MODE)
     console.log("API_URL:", API_URL)
 
     useEffect(() => {
