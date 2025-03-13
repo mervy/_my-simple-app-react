@@ -8,17 +8,21 @@ function App() {
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const urlApi = 'http://localhost:5001/api/posts';
+    const API_URL = import.meta.env.PROD
+        ? import.meta.env.VITE_RENDER_SERVER_URL
+        : import.meta.env.VITE_LOCAL_SERVER_URL;
+
+   //console.log('API_URL:', API_URL);
 
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const response = await fetch(urlApi);
+                const response = await fetch(API_URL);
                 if (!response.ok) throw new Error('Erro ao carregar posts');
                 const data = await response.json();
                 setPosts(data);
             } catch (err) {
-                setError("O servidor da api está rodando?\n", err.message);
+                setError('O servidor da api está rodando?', err.message);
             } finally {
                 setLoading(false);
             }
@@ -82,7 +86,7 @@ function App() {
                         })}
                     </Card.Text>
                     <Card.Text className="flex-grow-1">{post.content.substring(0, 100)}...</Card.Text>
-                    <button className="btn btn-primary btn-sm mt-auto text-right">
+                    <button className="btn btn-primary btn-sm mt-auto text-">
                         <i className="bi bi-arrow-right me-1"></i>
                         Ler Mais
                     </button>
