@@ -9,10 +9,10 @@ function App() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const API_URL = import.meta.env.PROD
-    ? import.meta.env.VITE_RENDER_SERVER_URL 
-    : import.meta.env.VITE_LOCAL_SERVER_URL;
+        ? import.meta.env.VITE_RENDER_SERVER_URL
+        : import.meta.env.VITE_LOCAL_SERVER_URL;
 
-    console.log("API_URL:", API_URL)
+   //console.log('API_URL:', API_URL);
 
     useEffect(() => {
         const fetchPosts = async () => {
@@ -22,7 +22,7 @@ function App() {
                 const data = await response.json();
                 setPosts(data);
             } catch (err) {
-                setError("O servidor da api está rodando?", err.message);
+                setError('O servidor da api está rodando?', err.message);
             } finally {
                 setLoading(false);
             }
